@@ -1,11 +1,13 @@
 .PHONY: test lint clean
 
+GO_VERSION	?= 1.18
+GO_CMD			:= go$(GO_VERSION)
 
-test:
-	go test -v ./... -cover
+test: clean
+	${GO_CMD} test -v ./... -cover
 
 lint:
-	go vet ./...
+	${GO_CMD} vet ./...
 
 clean:
-	go mod tidy
+	${GO_CMD} mod tidy
